@@ -1,0 +1,120 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPdNJBpHQm4CDYnixZLdABB",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/ajay413rai/cs250-fall2026-fnu-ajay/blob/main/Final%20Project/F_P_Ajay_Ajayipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "# Reel Watch-Time Tracker\n",
+        "My project is a simple program for people who watch reels and want to keep track of how much time they spend watching them. It records the minutes for each day of the week, calculates the weekly total and daily average and finds the day with the most watch time."
+      ],
+      "metadata": {
+        "id": "FcvIJ0dqM4px"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 1,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "5hHT5wrFMsN0",
+        "outputId": "7b6b5a50-5346-419a-c8b8-639e3d1350b4"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Minutes watched each day:\n",
+            "Monday: 35\n",
+            "Tuesday: 50\n",
+            "Wednesday: 25\n",
+            "Thursday: 40\n",
+            "Friday: 60\n",
+            "Saturday: 75\n",
+            "Sunday: 30\n",
+            "\n",
+            "Weekly total: 315 minutes\n",
+            "Daily average: 45.0 minutes\n",
+            "Most-watched day: Saturday\n"
+          ]
+        }
+      ],
+      "source": [
+        "days = [\"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\",\n",
+        "        \"Friday\", \"Saturday\", \"Sunday\"]\n",
+        "\n",
+        "def add_time(times, day, minutes):\n",
+        "    times[day] = minutes\n",
+        "\n",
+        "def weekly_total(times):\n",
+        "    return sum(times.values())\n",
+        "\n",
+        "def daily_average(times):\n",
+        "    return weekly_total(times) / 7\n",
+        "\n",
+        "def most_watched_day(times):\n",
+        "    return max(times, key=times.get)\n",
+        "\n",
+        "# Example minutes from my project\n",
+        "example_minutes = [35, 50, 25, 40, 60, 75, 30]\n",
+        "\n",
+        "watch_times = {}\n",
+        "\n",
+        "for day, minutes in zip(days, example_minutes):\n",
+        "    add_time(watch_times, day, minutes)\n",
+        "\n",
+        "print(\"Minutes watched each day:\")\n",
+        "for day, minutes in watch_times.items():\n",
+        "    print(day + \":\", minutes)\n",
+        "\n",
+        "print(\"\\nWeekly total:\", weekly_total(watch_times), \"minutes\")\n",
+        "print(\"Daily average:\", round(daily_average(watch_times), 1), \"minutes\")\n",
+        "print(\"Most-watched day:\", most_watched_day(watch_times))"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## **Example results:**\n",
+        "\n",
+        "The example values add up to 315 minutes for the week. The daily average is 45 minutes, and Saturday is the most-watched day, with 75 minutes.\n",
+        "\n",
+        "\n",
+        "\n",
+        "## **AI use log:**\n",
+        "\n",
+        "I used ChatGPT to help organize and draft the code, correct mistakes, and make my project easier to understand and present. I used my proposal and design to guide what the program should do."
+      ],
+      "metadata": {
+        "id": "ULx9CD_0ON0T"
+      }
+    }
+  ]
+}
